@@ -1,0 +1,48 @@
+Overview of the System
+This project demonstrates a secure backend system with Authentication, Authorization, and Role-Based Access Control (RBAC) using Node.js and MongoDB. It is designed to:
+
+a] Authenticate users via JWT-based authentication.
+b] Authorize users with role-based access to resources (e.g., Admin, Moderator, User roles).
+c] Ensure fine-grained access control for shared resources based on roles.
+
+Key Features-
+
+[i] Authentication:
+
+1] Users can register, log in, and log out securely.
+2] Passwords are hashed using bcrypt to ensure secure storage.
+3] Tokens are generated using jsonwebtoken to provide secure, stateless session management.
+
+[ii]Authorization:
+
+1] Role-Based Access Control (RBAC) is implemented to restrict access to resources based on the user's role.
+2] Admins have full access (view, edit, delete).
+3] Moderators have partial access (view, edit).
+4] Users have limited access (view only).
+
+[iii] Security Enhancements:
+
+1] JWT token blacklisting is used to securely handle user logout.
+2] Middleware-based implementation ensures scalability and reusability.
+
+[iv] Database:
+
+1] MongoDB is used as the database, with the cluster hosted on MongoDB Atlas for cloud-based deployment.
+
+--------------------------------------------------------------------------------------------------------------------
+
+IMPLEMENTATION:
+
+Authentication:
+        Registration: User details are securely stored in the database with hashed passwords using bcrypt.
+        Login: Credentials are validated, and a JWT token is issued.
+        Logout: Tokens are blacklisted to prevent reuse.
+
+
+Authorization:
+        Middleware (verifyToken) ensres only authenticated users can access protected routes.
+        Middleware (verifyRole) checks the user's role before allowing access to specific endpoints.
+
+RBAC:
+        Role permissions are defined and enforced in middleware.
+        Routes are protected based on roles, demonstrating granular access control.
